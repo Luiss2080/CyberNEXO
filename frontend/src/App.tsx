@@ -12,6 +12,7 @@ import { MissionMap } from './pages/dashboard/MissionMap';
 import { Profile } from './pages/dashboard/Profile';
 import { Leaderboard } from './pages/dashboard/Leaderboard';
 import { DailyChallenge } from './pages/mission/DailyChallenge';
+import { AdminDashboard } from './pages/admin/AdminDashboard';
 import { useEffect } from 'react';
 import { syncManager } from './services/SyncManager';
 import { useAuthStore } from './store/authStore';
@@ -43,6 +44,8 @@ function App() {
         <Route path="/map" element={<MissionMap />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+        
         <Route path="/mission/phishing" element={<PhishingHunter />} />
         <Route path="/mission/password" element={<PasswordLab />} />
         <Route path="/mission/privacy" element={<PrivacyCheck />} />
