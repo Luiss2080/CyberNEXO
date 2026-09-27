@@ -131,9 +131,14 @@ export const Dashboard: React.FC = () => {
                 <p className="text-orange-200/70 text-sm">Prueba cronometrada de 3 minutos. Recompensa: 500 XP.</p>
               </div>
             </div>
-            <Button variant="primary" className="bg-orange-600 hover:bg-orange-700 text-white border-none shrink-0" onClick={() => navigate('/challenge/daily')}>
-              INICIAR DESAFÍO
-            </Button>
+            <div className="flex gap-4">
+              <Button variant="secondary" className="border-orange-500 text-orange-500 hover:bg-orange-500/20" onClick={() => navigate('/leaderboard')}>
+                SALÓN DE LA FAMA
+              </Button>
+              <Button variant="primary" className="bg-orange-600 hover:bg-orange-700 text-white border-none shrink-0" onClick={() => navigate('/challenge/daily')}>
+                INICIAR DESAFÍO
+              </Button>
+            </div>
           </CardBody>
         </Card>
 
