@@ -73,6 +73,10 @@ CyberNexo es un ecosistema educativo interactivo cuyo objetivo principal es ense
 ### Progressive Web App (Fase 13)
 - **RF-33 (PWA)**: La aplicación frontend DEBERÁ estar configurada con un manifiesto web y service workers (`vite-plugin-pwa`) para permitir la instalación en dispositivos móviles y de escritorio.
 
+### Dashboard y Mapa de Progresión (MVP Core)
+- **RF-34 (Dashboard)**: El sistema DEBERÁ contar con un "Dashboard del Jugador" que muestre el Nivel actual, XP, racha, progreso por área y estadísticas generales de precisión.
+- **RF-35 (Map)**: El sistema DEBERÁ mostrar un "Mapa de Misiones" (Ruta educativa) visual indicando los niveles desbloqueados y las misiones completadas.
+
 ## 5. Casos Límite y Errores (Edge Cases)
 - **Desincronización de XP**: Si un usuario manipula `localStorage` o `IndexedDB` para ganar 9999 XP, el backend rechazará la sincronización pues recalcula los puntos validando los tiempos e intentos.
 - **Recuperación de Conexión**: Si 5 intentos offline se envían de golpe al recuperar conexión, el backend debe procesarlos de forma idempotente.
