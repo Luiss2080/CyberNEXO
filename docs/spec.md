@@ -43,6 +43,11 @@ CyberNexo es un ecosistema educativo interactivo cuyo objetivo principal es ense
 - **RF-16 (Universal)**: El sistema DEBERÁ emitir tokens JWT sin estado (stateless) para la autenticación de usuarios.
 - **RF-17 (Universal)**: El frontend DEBERÁ manejar el estado del usuario globalmente mediante Zustand y proveer interfaces de Login y Registro accesibles.
 
+### Motor del Juego (Game Engine - Fase 5)
+- **RF-18 (Universal)**: El frontend DEBERÁ contar con un `MissionEngine` centralizado que orqueste el ciclo de vida de cualquier misión (Cargar, Presentar, Observar, Decidir, Evaluar, Recompensar).
+- **RF-19 (Universal)**: Las misiones DEBERÁN ser cargadas de forma agnóstica a la vista mediante objetos JSON estrictamente tipados.
+- **RF-20 (Universal)**: El sistema DEBERÁ contar con un `RuleEngine` que determine los puntajes parciales o deducciones basándose en el comportamiento (ej: uso de pistas).
+
 ## 5. Casos Límite y Errores (Edge Cases)
 - **Desincronización de XP**: Si un usuario manipula `localStorage` o `IndexedDB` para ganar 9999 XP, el backend rechazará la sincronización pues recalcula los puntos validando los tiempos e intentos.
 - **Recuperación de Conexión**: Si 5 intentos offline se envían de golpe al recuperar conexión, el backend debe procesarlos de forma idempotente.
