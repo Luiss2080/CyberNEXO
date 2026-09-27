@@ -10,6 +10,7 @@ import { IncidentResponse } from './pages/mission/IncidentResponse';
 import { Dashboard } from './pages/dashboard/Dashboard';
 import { MissionMap } from './pages/dashboard/MissionMap';
 import { Profile } from './pages/dashboard/Profile';
+import { Leaderboard } from './pages/dashboard/Leaderboard';
 import { DailyChallenge } from './pages/mission/DailyChallenge';
 import { useEffect } from 'react';
 import { syncManager } from './services/SyncManager';
@@ -41,6 +42,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/map" element={<MissionMap />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/mission/phishing" element={<PhishingHunter />} />
         <Route path="/mission/password" element={<PasswordLab />} />
         <Route path="/mission/privacy" element={<PrivacyCheck />} />
