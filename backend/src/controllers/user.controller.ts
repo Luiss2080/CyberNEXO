@@ -7,22 +7,33 @@ const prisma = new PrismaClient();
 export const addExperience = async (req: AuthRequest, res: Response) => {
   try {
     const userId = req.user?.id;
-    const { xpGained } = req.body;
+    const { missionId, xpGained, accuracy, hintsUsed, errors } = req.body;
 
     if (!userId) return res.status(401).json({ message: 'Usuario no autenticado' });
     if (typeof xpGained !== 'number' || xpGained <= 0) {
       return res.status(400).json({ message: 'Cantidad de XP inválida' });
     }
 
-    // Transacción para obtener usuario y actualizarlo atómicamente
-    const result = await prisma.$transaction(async (tx) => {
+    const result = await prisma.$transaction(async (tx: any) => {
       const user = await tx.user.findUnique({ where: { id: userId } });
       if (!user) throw new Error('Usuario no encontrado');
 
+      // 1. Guardar el intento para analíticas (Sección 55)
+      if (missionId) {
+        await tx.missionAttempt.create({
+          data: {
+            userId,
+            missionId,
+            score: xpGained,
+            accuracy: accuracy || 0,
+            hintsUsed: hintsUsed || 0,
+          }
+        });
+      }
+
+      // 2. Actualizar progreso del jugador
       const newXp = user.xp + xpGained;
-      
-      // Lógica simple de nivel: 1 nivel por cada 500 XP
-      const newLevel = Math.floor(newXp / 500) + 1;
+      const newLevel = Math.floor(newXp / 500) + 1; // 500 XP = 1 Nivel
 
       const updatedUser = await tx.user.update({
         where: { id: userId },
@@ -40,7 +51,31 @@ export const addExperience = async (req: AuthRequest, res: Response) => {
 
     return res.status(200).json(result);
   } catch (error) {
-    console.error(error);
+    console.error('Error in addExperience:', error);
     return res.status(500).json({ message: 'Error interno al actualizar XP' });
+  }
+};
+
+// Fase 9: Sistema de Ranking (Leaderboard)
+export const getLeaderboard = async (req: AuthRequest, res: Response) => {
+  try {
+    const topUsers = await prisma.user.findMany({
+      take: 10,
+      orderBy: [
+        { level: 'desc' },
+        { xp: 'desc' }
+      ],
+      select: {
+        id: true,
+        name: true,
+        level: true,
+        xp: true
+      }
+    });
+
+    return res.status(200).json(topUsers);
+  } catch (error) {
+    console.error('Error in getLeaderboard:', error);
+    return res.status(500).json({ message: 'Error al obtener el ranking' });
   }
 };
