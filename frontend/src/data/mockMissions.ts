@@ -28,5 +28,20 @@ export const mockMissions: Record<string, MissionDefinition> = {
         ]
       }
     ]
+  },
+  "password-01": {
+    id: "password-01",
+    type: "PASSWORD",
+    title: "El Laboratorio de Entropía",
+    difficulty: 2,
+    scenario: "Un sistema de la empresa ha sido vulnerado por ataques de fuerza bruta. Necesitas crear una contraseña nueva que resista los ataques modernos.",
+    basePoints: 150,
+    steps: [
+      {
+        id: "step-1",
+        content: "Crea una contraseña que alcance el nivel FUERTE de seguridad. Usa mayúsculas, números y caracteres especiales.",
+        hints: ["Las frases de paso (ej. Perro-Camina-Lento-99!) son muy seguras y fáciles de recordar."]
+      }
+    ]
   }
 };
