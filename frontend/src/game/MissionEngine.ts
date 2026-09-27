@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { MissionDefinition, MissionState, EvaluationResult } from './types';
 import { RuleEngine } from './RuleEngine';
+import { useAuthStore } from '../store/authStore';
 
 interface MissionEngineState {
   state: MissionState;
@@ -52,7 +53,7 @@ export const useMissionEngine = create<MissionEngineState>((set, get) => ({
     return null;
   },
 
-  submitAnswer: (isCorrect) => {
+  submitAnswer: async (isCorrect) => {
     set((state) => ({
       correctAnswers: isCorrect ? state.correctAnswers + 1 : state.correctAnswers,
       errors: isCorrect ? state.errors : state.errors + 1,
@@ -61,11 +62,11 @@ export const useMissionEngine = create<MissionEngineState>((set, get) => ({
 
     const { currentMission, currentStepIndex } = get();
     if (currentMission && currentStepIndex >= currentMission.steps.length) {
-      get().finishMission();
+      await get().finishMission();
     }
   },
 
-  finishMission: () => {
+  finishMission: async () => {
     const { currentMission, correctAnswers, hintsUsed, errors } = get();
     if (!currentMission) return;
 
@@ -78,6 +79,23 @@ export const useMissionEngine = create<MissionEngineState>((set, get) => ({
       hintsUsed,
       errors
     );
+
+    // Integración Full-Stack (RF-29)
+    try {
+      const { token } = useAuthStore.getState();
+      if (token) {
+        await fetch('http://localhost:3000/api/v1/users/xp', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({ xpGained: result.score })
+        });
+      }
+    } catch (e) {
+      console.warn("No se pudo persistir la XP en el backend (Modo Offline activo).");
+    }
 
     set({ state: 'COMPLETED', result });
   },
