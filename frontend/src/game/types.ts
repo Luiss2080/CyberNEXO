@@ -1,4 +1,4 @@
-export type MissionType = 'EMAIL_ANALYSIS' | 'PASSWORD' | 'PRIVACY' | 'INCIDENT';
+export type MissionType = 'EMAIL_ANALYSIS' | 'PASSWORD' | 'PRIVACY' | 'INCIDENT' | 'SAFE_BROWSING' | 'SOCIAL_ENG';
 
 export interface MissionOption {
   id: string;

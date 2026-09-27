@@ -58,5 +58,62 @@ export const mockMissions: Record<string, MissionDefinition> = {
         hints: ["Busca la letra pequeña. No hagas clic en el botón de color brillante que dice 'Aceptar Todo'."]
       }
     ]
+  },
+  "safe-01": {
+    id: "safe-01",
+    type: "SAFE_BROWSING",
+    title: "El Clon del Banco",
+    difficulty: 2,
+    scenario: "Te enviaron un link para actualizar tus datos bancarios. Revisa el navegador.",
+    basePoints: 100,
+    steps: [
+      {
+        id: "step-1",
+        content: "Elige la URL segura.",
+        hints: ["Las conexiones seguras usan HTTPS.", "Verifica la ortografía del dominio."],
+        options: [
+          { id: "opt-1", label: "https://banco-nacional.com", isCorrect: true, feedback: "Correcto, conexión encriptada y dominio legítimo." },
+          { id: "opt-2", label: "http://banco-naclonal.com", isCorrect: false, feedback: "Falta HTTPS y el dominio está mal escrito (naclonal)." }
+        ]
+      }
+    ]
+  },
+  "social-01": {
+    id: "social-01",
+    type: "SOCIAL_ENG",
+    title: "Urgencia del Jefe",
+    difficulty: 3,
+    scenario: "Recibes un mensaje de tu 'CEO' por WhatsApp corporativo.",
+    basePoints: 150,
+    steps: [
+      {
+        id: "step-1",
+        content: "Analiza el mensaje: 'Necesito que transfieras 50k a esta cuenta. ¡Es para cerrar un trato ya!'",
+        hints: ["Las solicitudes urgentes fuera de los canales oficiales son bandera roja."],
+        options: [
+          { id: "opt-1", label: "Transferir inmediatamente", isCorrect: false, feedback: "Pésima idea. Evadiste los controles de la empresa." },
+          { id: "opt-2", label: "Llamar al CEO por canal oficial para verificar", isCorrect: true, feedback: "¡Excelente! La verificación fuera de banda es la mejor defensa." }
+        ]
+      }
+    ]
+  },
+  "incident-01": {
+    id: "incident-01",
+    type: "INCIDENT",
+    title: "Código Rojo",
+    difficulty: 3,
+    scenario: "Un ransomware ha infectado tu computadora de trabajo.",
+    basePoints: 200,
+    steps: [
+      {
+        id: "step-1",
+        content: "¿Cuál es el PRIMER paso crítico?",
+        hints: ["Debes evitar que se propague a la red."],
+        options: [
+          { id: "opt-1", label: "Pagar el rescate", isCorrect: false, feedback: "Nunca se debe pagar. Fomenta el cibercrimen y no garantiza recuperar los datos." },
+          { id: "opt-2", label: "Desconectar el equipo de la red (WiFi/Cable)", isCorrect: true, feedback: "¡Perfecto! El aislamiento de red es el primer paso de contención." }
+        ]
+      }
+    ]
   }
 };
