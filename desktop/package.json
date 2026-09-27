@@ -1,0 +1,32 @@
+{
+  "name": "cybernexo-desktop",
+  "version": "1.0.0",
+  "description": "CyberNexo Security Lab - Desktop Client",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "author": "CyberNexo Team",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3",
+    "electron-is-dev": "^3.0.1"
+  },
+  "build": {
+    "appId": "com.cybernexo.desktop",
+    "productName": "CyberNexo",
+    "mac": {
+      "category": "public.app-category.education"
+    },
+    "win": {
+      "target": ["nsis", "portable"]
+    },
+    "linux": {
+      "target": ["AppImage", "deb"]
+    }
+  }
+}
