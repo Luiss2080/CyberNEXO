@@ -20,9 +20,13 @@ export const requireAuth = (req: AuthRequest, res: Response, next: NextFunction)
   const token = authHeader.split(' ')[1];
 
   try {
-    const decoded = jwt.verify(token, JWT_SECRET) as { id: string; email: string };
-    req.user = decoded;
-    next();
+    const decoded = jwt.verify(token, JWT_SECRET) as jwt.JwtPayload;
+    if (decoded && decoded.id && decoded.email) {
+      req.user = { id: decoded.id as string, email: decoded.email as string };
+      next();
+    } else {
+      return res.status(401).json({ message: 'Estructura de token inválida.' });
+    }
   } catch (error) {
     return res.status(401).json({ message: 'Token inválido o expirado.' });
   }
