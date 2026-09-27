@@ -52,6 +52,10 @@ CyberNexo es un ecosistema educativo interactivo cuyo objetivo principal es ense
 - **RF-21 (Phishing)**: La vista de misión de tipo `EMAIL_ANALYSIS` DEBERÁ renderizar una interfaz que simule un cliente de correo electrónico corporativo.
 - **RF-22 (Phishing)**: El jugador DEBERÁ poder hacer clic en elementos sospechosos (remitente, enlaces, texto de urgencia) para analizarlos y el `MissionEngine` DEBERÁ registrar la corrección de sus selecciones.
 
+### Módulo 2: Password Lab (Fase 7)
+- **RF-23 (Password)**: La vista de misión tipo `PASSWORD` DEBERÁ analizar en tiempo real (lado del cliente) la entropía de una contraseña escrita por el usuario.
+- **RF-24 (Password)**: Por razones de privacidad, el sistema JAMÁS DEBERÁ enviar la contraseña escrita en el minijuego a la base de datos backend.
+
 ## 5. Casos Límite y Errores (Edge Cases)
 - **Desincronización de XP**: Si un usuario manipula `localStorage` o `IndexedDB` para ganar 9999 XP, el backend rechazará la sincronización pues recalcula los puntos validando los tiempos e intentos.
 - **Recuperación de Conexión**: Si 5 intentos offline se envían de golpe al recuperar conexión, el backend debe procesarlos de forma idempotente.
