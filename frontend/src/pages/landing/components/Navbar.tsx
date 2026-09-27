@@ -5,9 +5,10 @@ import { Button } from '../../../components/ui/Button';
 
 interface NavbarProps {
   onInstallClick: () => void;
+  onLoginClick: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onInstallClick }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onInstallClick, onLoginClick }) => {
   return (
     <motion.nav 
       initial={{ y: -100 }}
@@ -23,7 +24,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onInstallClick }) => {
         <div className="hidden md:flex gap-6 items-center text-sm font-medium">
           <a href="#aprender" className="hover:text-cyber-primary transition-colors">Aprender</a>
           <a href="#gameplay" className="hover:text-cyber-primary transition-colors">Gameplay</a>
-          <Button variant="ghost">Iniciar Sesión</Button>
+          <Button variant="ghost" onClick={onLoginClick}>Iniciar Sesión</Button>
           <Button variant="primary" onClick={onInstallClick}>Instalar App</Button>
         </div>
       </div>
