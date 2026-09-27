@@ -38,6 +38,11 @@ CyberNexo es un ecosistema educativo interactivo cuyo objetivo principal es ense
 - **RF-13 (Universal)**: La interfaz DEBERÁ contener micro-animaciones (framer-motion o CSS puro), gradientes vibrantes y un diseño premium (Premium Design Standard) para maximizar la retención.
 - **RF-14 (Universal)**: La Landing Page DEBERÁ promover fuertemente la instalación (Desktop/PWA) mediante una sección dedicada, argumentando las ventajas del juego offline.
 
+### Autenticación y Seguridad (Fase 4)
+- **RF-15 (Universal)**: El sistema backend DEBERÁ manejar la persistencia de usuarios mediante Prisma ORM conectándose a MySQL, guardando credenciales utilizando hash bcrypt o Argon2.
+- **RF-16 (Universal)**: El sistema DEBERÁ emitir tokens JWT sin estado (stateless) para la autenticación de usuarios.
+- **RF-17 (Universal)**: El frontend DEBERÁ manejar el estado del usuario globalmente mediante Zustand y proveer interfaces de Login y Registro accesibles.
+
 ## 5. Casos Límite y Errores (Edge Cases)
 - **Desincronización de XP**: Si un usuario manipula `localStorage` o `IndexedDB` para ganar 9999 XP, el backend rechazará la sincronización pues recalcula los puntos validando los tiempos e intentos.
 - **Recuperación de Conexión**: Si 5 intentos offline se envían de golpe al recuperar conexión, el backend debe procesarlos de forma idempotente.
