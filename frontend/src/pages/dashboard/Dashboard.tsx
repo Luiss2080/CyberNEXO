@@ -118,6 +118,25 @@ export const Dashboard: React.FC = () => {
             </CardBody>
           </Card>
         </div>
+
+        {/* Módulo Especial: Desafío Diario */}
+        <Card className="border-orange-500/50 bg-orange-500/10 mt-8">
+          <CardBody className="p-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-500 shrink-0">
+                <Flame size={32} />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold font-mono text-orange-500">DESAFÍO DEL DÍA</h3>
+                <p className="text-orange-200/70 text-sm">Prueba cronometrada de 3 minutos. Recompensa: 500 XP.</p>
+              </div>
+            </div>
+            <Button variant="primary" className="bg-orange-600 hover:bg-orange-700 text-white border-none shrink-0" onClick={() => navigate('/challenge/daily')}>
+              INICIAR DESAFÍO
+            </Button>
+          </CardBody>
+        </Card>
+
       </div>
     </div>
   );

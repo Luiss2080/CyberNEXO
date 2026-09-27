@@ -10,6 +10,7 @@ import { IncidentResponse } from './pages/mission/IncidentResponse';
 import { Dashboard } from './pages/dashboard/Dashboard';
 import { MissionMap } from './pages/dashboard/MissionMap';
 import { Profile } from './pages/dashboard/Profile';
+import { DailyChallenge } from './pages/mission/DailyChallenge';
 import { useEffect } from 'react';
 import { syncManager } from './services/SyncManager';
 import { useAuthStore } from './store/authStore';
@@ -46,6 +47,7 @@ function App() {
         <Route path="/mission/safe-browsing" element={<SafeBrowsing />} />
         <Route path="/mission/social-engineering" element={<SocialEngineering />} />
         <Route path="/mission/incident-response" element={<IncidentResponse />} />
+        <Route path="/challenge/daily" element={<DailyChallenge />} />
       </Routes>
     </BrowserRouter>
   );
