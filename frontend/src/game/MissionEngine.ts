@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { MissionDefinition, MissionState, EvaluationResult } from './types';
 import { RuleEngine } from './RuleEngine';
 import { useAuthStore } from '../store/authStore';
+import { syncManager } from '../services/SyncManager';
 
 interface MissionEngineState {
   state: MissionState;
@@ -80,11 +81,11 @@ export const useMissionEngine = create<MissionEngineState>((set, get) => ({
       errors
     );
 
-    // Integración Full-Stack (RF-29)
-    try {
-      const { token } = useAuthStore.getState();
-      if (token) {
-        await fetch('http://localhost:3000/api/v1/users/xp', {
+    // Integración Full-Stack y Offline-First (RF-29 / Fase 12)
+    const { token } = useAuthStore.getState();
+    if (token) {
+      try {
+        const response = await fetch('http://localhost:3000/api/v1/users/xp', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -92,9 +93,23 @@ export const useMissionEngine = create<MissionEngineState>((set, get) => ({
           },
           body: JSON.stringify({ xpGained: result.score })
         });
+        
+        if (!response.ok) throw new Error('Servidor retornó error');
+        
+      } catch (e) {
+        console.warn("Fallo en sincronización online. Guardando en IndexedDB (Cola Offline)...");
+        // Fallback: Guardar en la cola local
+        await syncManager.enqueue({
+          type: 'MISSION_COMPLETION',
+          payload: {
+            missionId: currentMission.id,
+            score: result.score,
+            accuracy: result.accuracy,
+            hintsUsed: hintsUsed,
+            errors: errors
+          }
+        });
       }
-    } catch (e) {
-      console.warn("No se pudo persistir la XP en el backend (Modo Offline activo).");
     }
 
     set({ state: 'COMPLETED', result });

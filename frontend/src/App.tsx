@@ -9,8 +9,29 @@ import { SocialEngineering } from './pages/mission/SocialEngineering';
 import { IncidentResponse } from './pages/mission/IncidentResponse';
 import { Dashboard } from './pages/dashboard/Dashboard';
 import { MissionMap } from './pages/dashboard/MissionMap';
+import { useEffect } from 'react';
+import { syncManager } from './services/SyncManager';
+import { useAuthStore } from './store/authStore';
 
 function App() {
+  const { token } = useAuthStore();
+
+  useEffect(() => {
+    const handleOnline = () => {
+      if (token) {
+        syncManager.attemptSync(token);
+      }
+    };
+
+    window.addEventListener('online', handleOnline);
+    // Intento inicial al montar si hay token
+    if (token && navigator.onLine) {
+      syncManager.attemptSync(token);
+    }
+
+    return () => window.removeEventListener('online', handleOnline);
+  }, [token]);
+
   return (
     <BrowserRouter>
       <Routes>
