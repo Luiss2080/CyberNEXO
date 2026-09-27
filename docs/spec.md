@@ -27,6 +27,10 @@ CyberNexo es un ecosistema educativo interactivo cuyo objetivo principal es ense
 ### Seguridad (Electrón y Web)
 - **RF-7 (Universal)**: El contenedor de escritorio (Electron) DEBERÁ aislar el contexto de Node.js de la interfaz de usuario web para prevenir ejecución de código arbitrario.
 
+### Design System y UI Base (Fase 2)
+- **RF-8 (Universal)**: El frontend DEBERÁ implementar un Design System basado en Tailwind CSS, soportando un esquema de color principal inmersivo (estilo ciberseguridad moderno, oscurecido por defecto).
+- **RF-9 (Universal)**: El sistema DEBERÁ proporcionar componentes de UI reutilizables básicos (Button, Card, Input) accesibles y tipados estrictamente mediante TypeScript.
+
 ## 5. Casos Límite y Errores (Edge Cases)
 - **Desincronización de XP**: Si un usuario manipula `localStorage` o `IndexedDB` para ganar 9999 XP, el backend rechazará la sincronización pues recalcula los puntos validando los tiempos e intentos.
 - **Recuperación de Conexión**: Si 5 intentos offline se envían de golpe al recuperar conexión, el backend debe procesarlos de forma idempotente.
