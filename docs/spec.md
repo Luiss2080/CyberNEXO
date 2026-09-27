@@ -34,6 +34,8 @@ CyberNexo es un ecosistema educativo interactivo cuyo objetivo principal es ense
 ### Landing Page y SEO (Fase 3)
 - **RF-10 (Universal)**: El frontend DEBERÁ mostrar una Landing Page como ruta raíz (`/`), la cual debe incluir un Hero section con la propuesta de valor y los botones de acción primarios (Jugar, Instalar).
 - **RF-11 (Universal)**: La Landing Page DEBERÁ listar las áreas de aprendizaje mediante tarjetas visuales construidas sobre el Design System (Phishing, Contraseñas, Privacidad, etc.).
+- **RF-12 (Universal)**: El Design System DEBERÁ incorporar componentes interactivos complejos como `Modal` para mostrar opciones de instalación multiplataforma y `Carousel` para exhibir un vistazo del gameplay.
+- **RF-13 (Universal)**: La interfaz DEBERÁ contener micro-animaciones (framer-motion o CSS puro), gradientes vibrantes y un diseño premium (Premium Design Standard) para maximizar la retención.
 
 ## 5. Casos Límite y Errores (Edge Cases)
 - **Desincronización de XP**: Si un usuario manipula `localStorage` o `IndexedDB` para ganar 9999 XP, el backend rechazará la sincronización pues recalcula los puntos validando los tiempos e intentos.
