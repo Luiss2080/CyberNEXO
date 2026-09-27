@@ -60,6 +60,10 @@ CyberNexo es un ecosistema educativo interactivo cuyo objetivo principal es ense
 - **RF-25 (Privacy)**: La vista de misión tipo `PRIVACY` DEBERÁ simular un modal de "Términos y Condiciones" o "Cookies" de un sitio de terceros.
 - **RF-26 (Privacy)**: El jugador DEBERÁ ser penalizado si hace clic ciegamente en "Aceptar Todo" y recompensado si selecciona "Gestionar Preferencias" y rechaza el seguimiento.
 
+### Sistema de Progresión e Integración DB (Fases 9 y 11)
+- **RF-27 (Progression)**: El backend DEBERÁ proveer un endpoint seguro (autenticado por JWT) para registrar la experiencia (XP) ganada por el usuario tras completar una misión.
+- **RF-28 (Progression)**: El backend DEBERÁ actualizar el nivel del jugador en la base de datos MySQL (ej. subir a Nivel 2 si alcanza cierta XP) de forma transaccional usando Prisma.
+
 ## 5. Casos Límite y Errores (Edge Cases)
 - **Desincronización de XP**: Si un usuario manipula `localStorage` o `IndexedDB` para ganar 9999 XP, el backend rechazará la sincronización pues recalcula los puntos validando los tiempos e intentos.
 - **Recuperación de Conexión**: Si 5 intentos offline se envían de golpe al recuperar conexión, el backend debe procesarlos de forma idempotente.
