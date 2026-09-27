@@ -43,5 +43,20 @@ export const mockMissions: Record<string, MissionDefinition> = {
         hints: ["Las frases de paso (ej. Perro-Camina-Lento-99!) son muy seguras y fáciles de recordar."]
       }
     ]
+  },
+  "privacy-01": {
+    id: "privacy-01",
+    type: "PRIVACY",
+    title: "El Campo Minado (Cookies)",
+    difficulty: 1,
+    scenario: "Acabas de entrar a una nueva red social. Inmediatamente aparece un aviso bloqueando la pantalla.",
+    basePoints: 100,
+    steps: [
+      {
+        id: "step-1",
+        content: "Navega las opciones de privacidad e impide que la plataforma rastree tus datos con fines comerciales.",
+        hints: ["Busca la letra pequeña. No hagas clic en el botón de color brillante que dice 'Aceptar Todo'."]
+      }
+    ]
   }
 };

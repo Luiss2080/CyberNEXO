@@ -56,6 +56,10 @@ CyberNexo es un ecosistema educativo interactivo cuyo objetivo principal es ense
 - **RF-23 (Password)**: La vista de misión tipo `PASSWORD` DEBERÁ analizar en tiempo real (lado del cliente) la entropía de una contraseña escrita por el usuario.
 - **RF-24 (Password)**: Por razones de privacidad, el sistema JAMÁS DEBERÁ enviar la contraseña escrita en el minijuego a la base de datos backend.
 
+### Módulo 3: Privacy Check (Fase 8)
+- **RF-25 (Privacy)**: La vista de misión tipo `PRIVACY` DEBERÁ simular un modal de "Términos y Condiciones" o "Cookies" de un sitio de terceros.
+- **RF-26 (Privacy)**: El jugador DEBERÁ ser penalizado si hace clic ciegamente en "Aceptar Todo" y recompensado si selecciona "Gestionar Preferencias" y rechaza el seguimiento.
+
 ## 5. Casos Límite y Errores (Edge Cases)
 - **Desincronización de XP**: Si un usuario manipula `localStorage` o `IndexedDB` para ganar 9999 XP, el backend rechazará la sincronización pues recalcula los puntos validando los tiempos e intentos.
 - **Recuperación de Conexión**: Si 5 intentos offline se envían de golpe al recuperar conexión, el backend debe procesarlos de forma idempotente.
