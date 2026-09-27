@@ -28,7 +28,7 @@ export type MissionState = 'IDLE' | 'LOADING' | 'PLAYING' | 'EVALUATING' | 'COMP
 
 export interface EvaluationResult {
   score: number;
-  stars: 1 | 2 | 3;
+  stars: 0 | 1 | 2 | 3;
   accuracy: number;
   hintsUsed: number;
   feedback: string[];

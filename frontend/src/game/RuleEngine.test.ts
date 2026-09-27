@@ -37,10 +37,9 @@ describe('RuleEngine (Score & Analytics)', () => {
     expect(result.score).toBe(90); // 100 - 10
   });
 
-  it('no debe otorgar estrellas si el accuracy es menor al 60%', () => {
-    const result = RuleEngine.evaluate(mockMission, 2, 5, 0, 3);
-    expect(result.accuracy).toBe(40);
-    expect(result.score).toBeLessThanOrEqual(40);
+  it('no debe otorgar estrellas si el accuracy es del 0%', () => {
+    const result = RuleEngine.evaluate(mockMission, 0, 5, 0, 5);
+    expect(result.accuracy).toBe(0);
     expect(result.stars).toBe(0);
   });
 

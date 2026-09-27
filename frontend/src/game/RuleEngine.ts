@@ -23,9 +23,11 @@ export class RuleEngine {
     const accuracy = totalQuestions > 0 ? (correctAnswers / totalQuestions) * 100 : 100;
     
     // Cálculo de estrellas
-    let stars: 1 | 2 | 3 = 1;
-    if (accuracy >= 90 && hintsUsed === 0) stars = 3;
-    else if (accuracy >= 70) stars = 2;
+    let stars: 0 | 1 | 2 | 3 = 1;
+    if (accuracy >= 90) stars = 3;
+    else if (accuracy >= 60) stars = 2;
+    else if (accuracy > 0) stars = 1;
+    else stars = 0;
 
     const feedback = [];
     if (accuracy === 100) feedback.push("¡Excelente precisión! Detectaste todas las amenazas.");
