@@ -31,6 +31,10 @@ CyberNexo es un ecosistema educativo interactivo cuyo objetivo principal es ense
 - **RF-8 (Universal)**: El frontend DEBERÁ implementar un Design System basado en Tailwind CSS, soportando un esquema de color principal inmersivo (estilo ciberseguridad moderno, oscurecido por defecto).
 - **RF-9 (Universal)**: El sistema DEBERÁ proporcionar componentes de UI reutilizables básicos (Button, Card, Input) accesibles y tipados estrictamente mediante TypeScript.
 
+### Landing Page y SEO (Fase 3)
+- **RF-10 (Universal)**: El frontend DEBERÁ mostrar una Landing Page como ruta raíz (`/`), la cual debe incluir un Hero section con la propuesta de valor y los botones de acción primarios (Jugar, Instalar).
+- **RF-11 (Universal)**: La Landing Page DEBERÁ listar las áreas de aprendizaje mediante tarjetas visuales construidas sobre el Design System (Phishing, Contraseñas, Privacidad, etc.).
+
 ## 5. Casos Límite y Errores (Edge Cases)
 - **Desincronización de XP**: Si un usuario manipula `localStorage` o `IndexedDB` para ganar 9999 XP, el backend rechazará la sincronización pues recalcula los puntos validando los tiempos e intentos.
 - **Recuperación de Conexión**: Si 5 intentos offline se envían de golpe al recuperar conexión, el backend debe procesarlos de forma idempotente.
