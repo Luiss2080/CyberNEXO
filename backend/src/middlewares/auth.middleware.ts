@@ -20,7 +20,7 @@ export const requireAuth = (req: AuthRequest, res: Response, next: NextFunction)
   const token = authHeader.split(' ')[1];
 
   try {
-    const decoded = jwt.verify(token, JWT_SECRET) as jwt.JwtPayload;
+    const decoded = jwt.verify(token, JWT_SECRET as string) as jwt.JwtPayload;
     if (decoded && decoded.id && decoded.email) {
       req.user = { id: decoded.id as string, email: decoded.email as string };
       next();
