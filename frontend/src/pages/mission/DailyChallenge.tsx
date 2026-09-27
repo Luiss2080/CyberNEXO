@@ -19,7 +19,7 @@ export const DailyChallenge: React.FC = () => {
   ];
 
   useEffect(() => {
-    let timer: NodeJS.Timeout;
+    let timer: ReturnType<typeof setInterval>;
     if (isPlaying && timeLeft > 0) {
       timer = setInterval(() => setTimeLeft(t => t - 1), 1000);
     } else if (timeLeft === 0) {
